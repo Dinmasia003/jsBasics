@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Add to cart</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <script src='main.js'></script>
+</head>
+<body>
+  <h3>Cart Quantity</h3>
+  <button onclick="console.log('cart quantity : ' +cartQuantity)">
+    show quantity</button>
+
+  <button onclick=" 
+  cartQuantity = cartQuantity +1
+  // the above can also be represented as cartQuantity ++
+  console.log('cart quantity : ' + cartQuantity )">
+    Add to cart</button>
+
+  <button onclick="
+    cartQuantity +=2
+    console.log('cart quantity : ' + cartQuantity)
+  ">+2</button>
+
+  <button onclick="
+  cartQuantity +=3
+  console.log('cart quantity : ' + cartQuantity)
+" >+3</button>
+
+  <button
+  onclick="
+  cartQuantity=0
+  console.log('cart quantity has been reset')
+  console.log('cart quantity : ' + cartQuantity)">Reset cart</button>
+
+  <script>
+    let cartQuantity = 0
+
+  </script>
+
+ <!-- I am very proud of myself. this is day one -->
+
+  
+</body>
+</html>

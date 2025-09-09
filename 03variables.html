@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>JS BASICS</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <!-- <script src='main.js'></script> -->
+</head>
+<body>
+  <p>
+    This is a practice to display quantities selected
+  </p>
+  <button class="showQuantity" >Show Quantity</button>
+  <button class="quantityPlusOne">Add to Cart</button>
+  <button class="quantityPlusTwo">+2</button>
+  <button class="quantityPlusThree">+3</button>
+  <button class="resetCart">Reset Quantity</button>
+  
+  <h2 class="cart"></h2>
+
+  <hr>
+  <div class="rock">
+    <p>This is a rough sketch of how rock, paper, scissors works</p>
+    <button class="rock computerMoves">Rock</button>
+    <button class="paper computerMoves">Paper</button>
+    <button class="scissors computerMoves">Scissors</button> <button class="resetScores">reset</button>
+    <h2 class="movesPicks"> Pick a move to get started</h2>
+    <h3 class="whoWins"></h3>
+    <p class="nunberOfWins"></p>
+
+  </div>
+
+  <hr>
+  <style>
+    .cart, .movesPicks{
+      color: red;
+    }
+  </style>
+
+
+  <script>
+    let quantity = 0
+    let cartQuantity = document.querySelector(".cart")
+    cartQuantity.textContent = quantity;
+    // console.log (cartQuantity +7)
+
+      
+    function updateCart(){
+      
+      let showQuantity = document.querySelector(".showQuantity")
+      let quantityPlusOne = document.querySelector(".quantityPlusOne");
+      let quantityPlusTwo = document.querySelector(".quantityPlusTwo");
+      let quantityPlusThree = document.querySelector(".quantityPlusThree");
+      let resetCart = document.querySelector(".resetCart");
+      
+
+      showQuantity.addEventListener('click', function(){
+        cartQuantity.textContent = "cart quantity : " + quantity
+      })
+      quantityPlusOne.addEventListener('click', function(){
+        quantity = quantity +1
+        cartQuantity.textContent ="cart quantity : "+ quantity
+      })
+      quantityPlusTwo.addEventListener('click', function(){
+        quantity = quantity +2
+        cartQuantity.textContent = "cart quantity : " + quantity
+      })
+      quantityPlusThree.addEventListener("click", function(){
+        quantity = quantity +3
+        cartQuantity.textContent = "cart quantity : " + quantity
+      })
+      resetCart.addEventListener("click", function(){
+        quantity = 0;
+        cartQuantity.textContent = "cart has been reset to " + quantity
+      })
+      
+    }
+    updateCart()
+
+
+    // function computerMoves(event){
+    //   const movesPicks = document.querySelector(".movesPicks")
+    //   const whoWins = document.querySelector(".whoWins")
+    //   const nunberOfWins = document.querySelector(".nunberOfWins")
+    //   let urmove = event.target;
+
+    //   let randomMoves =Math.random()
+    //   if(0<=randomMoves && randomMoves <= 1/3){
+    //     console.log( "computer picked rock")
+    //   }
+    //   else if(1/3 < randomMoves && randomMoves <=2/3){
+    //     console.log("compputer picked paper")
+    //   }
+    //   else(console.log("computer picked scissors"))
+    // }
+
+    const eachbtn = document.querySelectorAll(".computerMoves")
+    
+    let tie = 0;
+    let nubYouWin = 0 ;
+    let nubComputerWin = 0 ;
+     
+   let nunberOfWins = document.querySelector(".nunberOfWins")
+
+    eachbtn.forEach(btn => { btn.addEventListener("click", function(event){
+      const movesPicks = document.querySelector(".movesPicks")
+      const whoWins = document.querySelector(".whoWins")
+      let computerMove =  "";
+      let winner = "";
+      let randomMoves =Math.random()
+      let urmove = event.target.textContent;
+
+      if(0<=randomMoves && randomMoves <= 1/3){
+        computerMove = "rock"
+      }
+      else if(1/3 < randomMoves && randomMoves <=2/3){
+        computerMove = "paper"
+      }
+      else(computerMove = "scissors")
+
+      // console.log(computerMove)
+
+      // console.log(urmove + computerMove)
+      movesPicks.textContent = "You picked " + urmove + " computer picked " + computerMove;
+
+      if(urmove ==="Rock" && computerMove ==="rock"){
+        winner = 0
+      }
+      else if (urmove ==="Rock" && computerMove ==="paper"){
+        winner= 2
+      }
+      else if (urmove ==="Rock" && computerMove ==="scissors"){
+        winner= 1
+      }
+
+      else if(urmove ==="Paper" && computerMove ==="rock"){
+        winner = 1
+      }
+      else if (urmove ==="Paper" && computerMove ==="paper"){
+        winner= 0
+      }
+      else if (urmove ==="Paper" && computerMove ==="scissors"){
+        winner= 2
+      }
+
+      else if(urmove ==="Scissors" && computerMove ==="rock"){
+        winner = 2
+      }
+      else if (urmove ==="Scissors" && computerMove ==="paper"){
+        winner= 1
+      }
+      else if (urmove ==="Scissors" && computerMove ==="scissors"){
+        winner= 0
+      }
+      console.log( winner)
+
+
+      if (winner === 0) {
+        whoWins.textContent = "It's a tie";
+        tie = tie +1
+      }
+      else if(winner === 1)
+      {whoWins.textContent = "You win";
+      nubYouWin = nubYouWin +1
+      }
+
+      else if(winner === 2)
+      {whoWins.textContent = "Computer wins";
+      nubComputerWin = nubComputerWin +1
+      }
+
+      nunberOfWins.textContent = "Your Score =" + nubYouWin + " Ties =" + tie + " Computer Score ="+nubComputerWin
+    })
+      
+    });
+   let resetScores = document.querySelector(".resetScores")
+ 
+   resetScores.addEventListener("click",function(){
+    tie = 0;
+    nubYouWin = 0;
+    nubComputerWin = 0;
+
+    nunberOfWins.textContent = "Your Score = " + nubYouWin + " Ties =" + tie + " Computer Score ="+nubComputerWin;
+  
+   })
+  
+
+  </script>
+  
+</body>
+</html>
